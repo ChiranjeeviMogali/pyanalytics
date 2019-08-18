@@ -1,5 +1,4 @@
 #Topic: Pandas - group-aggregate, pivot, crosstab together 
-#-----------------------------
 #libraries
 import pandas as pd
 pd?
@@ -14,10 +13,11 @@ df = mtcars
 df.head()
 df.columns
 df.describe()
-df.sort_values('mpg')
+x=df.sort_values('wt')
+x.iloc[[0,7,15,23,31],[5]]
 #%% Groupby
 
-df.groupby("am").agg({ "mpg" : "min" }) #min mileage of each am 
+df.groupby("am").agg({ "mpg" : ["min","max"]}) #min and max mileage of each am 
 df.groupby('cyl')[['mpg','hp','wt']].mean()
 df.groupby('cyl').sum()
 df.groupby(['cyl','gear']).aggregate(['mean'])
@@ -52,7 +52,7 @@ group1.last()
 #nth row
 group1.nth(1) #check & compare
 group1.nth(-1) #last
-
+  
 #add prefix
 group1.mean()
 group1.mean().add_prefix('MEAN_')
@@ -65,7 +65,7 @@ pd.crosstab(df1.cyl, df1.gear)
 
 #df1.pivot_table(index='cyl', columns='gear')
 #with margin total
-pd.crosstab(df1.cyl, df1.gear, margins=True, margins_name="Total")
+pd.crosstab(df1.cyl, df1.gear, margins=True)
 pd.crosstab(df1.cyl, [df1.gear, df1.am])
 #multiple cols - left and top: with col names
 pd.crosstab([df1.cyl, df1.vs], [df1.gear, df1.am], rownames=['Cylinder', "Engine Type"], colnames=['Gear', "Transmission Type"],  dropna=False)
