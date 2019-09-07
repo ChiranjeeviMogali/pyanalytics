@@ -35,7 +35,7 @@ car.get('year')
 
 #%% { curly bracket, comma}
 #Set - ordered collection of simple items, immutable
-set1 = set(['india', 'pakistan', 'england', 'australia','india'])
+set1 = ['india', 'pakistan', 'england', 'australia','india']
 set1
 type(set1)
 
@@ -67,6 +67,7 @@ for i in list1:
     print(i)
   
 for i in list1:    print(i)
+for i in list1:    print(i, end='  ')
 for i in list1:    print('Dhiraj ', i + 6)
 
 tuple1
@@ -165,7 +166,7 @@ sns.pairplot(iris)
 
 
 #%%
-#Load Inbuilt Datasets
+#Load Inbuilt Datasets   
 import statsmodels.api as sm
 #https://vincentarelbundock.github.io/Rdatasets/datasets.html
 mtcars = sm.datasets.get_rdataset(dataname='mtcars', package='datasets')

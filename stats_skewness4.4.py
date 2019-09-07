@@ -19,7 +19,7 @@ df.columns
 #For calculating skewness by using df.skew() python inbuilt function.
 
 df.mpg
-df.mpg.skew()  #positive : right skewed
+df.mpg.skew()  #positive : right skewed,moderate
 df.mpg.plot(kind='hist')
 df.mpg.plot(kind='density')
 df.wt.plot(kind='density')

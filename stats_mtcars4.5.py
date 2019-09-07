@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from pydataset import data
 mtcars = data('mtcars')
 data=mtcars
+data=df
 data.head()
 data.columns
 data.dtypes
@@ -18,8 +19,8 @@ pd.set_option('display.width', 1000)
 data.head()
 
 #%%% Mean of column /rows
-mean([1,2,3,10]) #mean not defined in base python
 np.mean([1,2,3,10])
+#do not use mean([1,2,3,10]) #mean not defined in base python
 np.mean(data.mpg)
 data.mpg.mean()
 data['mpg'].mean()
@@ -186,7 +187,8 @@ sum(data2a.isnull().values.ravel())
 data2a.isnull().values.ravel().sum()
 data2a.qsec.mean()
 sum(map(any, data2a.isnull())) #Rows with any missing:
-data2a.isnull().sum(axis=1)  #rowwise sum
+data2a.qsec
+data2a.isnull().sum(axis=0)  #rowwise sum
 #Replacing
 data2a['qsec']
 data2a['qsec'].fillna(17, inplace=False)
@@ -202,14 +204,15 @@ sum(data2a.isnull().values.ravel())
 #fillna( method ='ffill', limit = 1, inplace = True) 
 data2b = data2.copy()
 data2b.isnull().sum()
+data2b
 data2b.fillna(method='ffill', inplace=False)
-data2b.fillna(method='ffill', limit=1, inplace=False)
+data2b.fillna(method='ffill', limit=2, inplace=False)
 data2b.fillna(data2b.mean(), inplace=False)
-
+data2b.wt.mean(skipna=False)
 #%%%Skewness
 data.head
 #kew(axis=None, skipna=None, level=None, numeric_only=None
-data.skew(axis = 0, skipna = True) 
+data2b.skew(axis = 0, skipna = False) 
 #skewness = 0 : normally distributed.
 #skewness > 0 : more weight in the left tail of the distribution.
 #skewness < 0 : more weight in the right tail of the distribution.

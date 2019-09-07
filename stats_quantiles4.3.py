@@ -5,10 +5,14 @@ from pydataset import data
 mtcars = data('mtcars')
 mtcars.head()
 df=mtcars
-df.quantile(q=.5) #default 50%
-df.quantile([0,.25, .50, .75, 1.0]) #quartiles
+df.quantile()
+#0,100; #40,60
+df.mpg.mean()
+df.quantile(q=.5) #default 50% Q2
+df.quantile([0,.25, .50, .75, 1.0]) #quartiles:Q1,Q2,Q3,Q4
 df.quantile(np.arange(0,1,.1))  #decile
-df.quantile(np.arange(0,1,.01))  #percentile
+np.arrange(0,100,5)
+df[['mpg','','']].quantile(np.arange(0,1,.01))  #percentile
 df.quantile([.1,.5, .9], numeric_only=True, axis=0) #selected percentile
 df.mpg.quantile([0,.25, .50, .75, 1.0]) #numpy single column 
 
